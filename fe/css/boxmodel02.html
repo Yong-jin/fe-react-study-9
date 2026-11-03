@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <style>
+        /* 기본 베이스 설정 */
+        * {
+            /* 전체선택자 -> 모든 요소엥 기본 세팅 적용 */
+            margin: 0;
+            /* 외부 여백 0 */
+            padding: 0;
+            /* 내부 여백 0 */
+            box-sizing: border-box;
+            /* 박스모델 사이즈 지정시, border 까지 사이즈로 인식 */
+        }
+
+
+        /*
+            display 속성
+                none            :   표시X 
+                block           :   한줄 다 차지, 사이즈(width, height) 적용 가능, 기본적으로 같이배치X, 여백 적용 가능 
+                inline          :   컨텐츠 크기만큼만 차지, 사이즈 적용X, 같은줄 옆에 나란히 배치, 여백 적용(좌/우 만...)
+                inline-block    :   자체적으로는 block 처럼 작동 (사이즈, 여백)
+                                    외부적으로는 inline 처럼 작동 (다른요소가 옆에 같은줄에 배치 가능)
+
+        */
+
+        .box {
+            width: 200px;
+            height: 100px;
+            border: 1px solid black;
+
+            margin: 10px;
+            padding: 10px;
+        }
+
+        .box1 {
+            /* div 태그 기본 성격 block */ 
+            /* width: 200px;
+            height: 100px;
+            border: 1px solid black;
+
+            margin: 10px;
+            padding: 10px; */
+
+            display:none;
+        }
+
+        .box2 {
+            /* div 태그 기본 성격 block */ 
+            /* width: 200px;
+            height: 100px;
+            border: 1px solid black;
+
+            margin: 10px;
+            padding: 10px; */
+
+            display:block;
+        }
+
+        .box3 {
+            /* div 태그 기본 성격 block */ 
+            /* width: 200px;
+            height: 100px;
+            border: 1px solid black;
+
+            margin: 10px;
+            padding: 10px; */
+            
+            /* display: inline; */
+            display: inline-block;
+        }
+
+        .span1 {
+            /* display: block; */
+            display: inline;
+
+            width: 200px;
+            height: 100px;
+        }
+
+        .parent {
+            width: 200px;
+            height: 100px;
+            border: 1px solid blue;
+        }
+
+        .child {
+            width: 100px;
+            height: 50px;
+            border: 1px solid red;
+
+            display:none;
+        }
+
+        .parent:hover .child {
+            display: block;
+        }
+
+        .parent:hover .parent-span {
+            color:blue;
+            text-decoration: underline;
+        }
+
+    </style>
+
+
+</head>
+
+<body>
+    <div class="box box1">box1</div>
+    <div class="box box2">box2</div>
+    <div class="box box3">box3</div>
+
+    <span class="span1">span1</span>
+    <span>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Id, sit at delectus est expedita natus reiciendis,
+        ipsa architecto tenetur sunt totam exercitationem. Soluta, perspiciatis officia. Sint veniam fugit consequuntur
+        quidem.</span>
+
+    <div class="parent">
+        <span class="parent-span">부모</span>
+        <br><br>
+        <div class="child">
+            자식
+        </div>
+    </div>
+
+</body>
+
+</html>
