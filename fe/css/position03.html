@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <style>
+
+        /* * {
+            margin:0;
+        } */
+
+        .box {
+            width: 200px;
+            height: 200px;
+        }
+
+        .red-box {
+            
+            background-color: red;
+
+            left:100px;
+            position: relative;
+
+            z-index:500;
+
+        }
+
+        .green-box {
+            background-color: green;
+            left:100px;
+            top:50px;
+            position: absolute;
+            z-index: 10;
+        }
+
+        .blue-box {
+            background-color: blue;
+
+            position: relative;
+            left: 50px;
+            top: -30px;
+        }
+
+        .container {
+            background-color: lightgray;
+            position: relative;
+        }
+
+    </style>
+</head>
+<body>
+    
+    <div class="box red-box"></div>
+    <div class="box green-box"></div>
+    <div class="box blue-box"></div>
+
+    <br><br>
+
+    <div class="container">
+        <div class="box red-box"></div>
+        <div class="box green-box"></div>
+        <div class="box blue-box"></div>
+    </div>
+
+</body>
+</html>
