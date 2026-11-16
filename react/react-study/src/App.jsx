@@ -7,6 +7,7 @@ import Basic01 from './components/Basic01'
 import State01 from './components/State01'
 import Export01 from './components/Export01'
 import ProductInfo from './quiz/quiz00/ProductInfo'
+import Quiz01 from './quiz/quiz01/Quiz01'
 
 function App() {
 
@@ -14,7 +15,8 @@ function App() {
     //<Basic01/>
     //<State01/>
     //<Export01/>
-    <ProductInfo/>
+    //<ProductInfo/>
+    <Quiz01/>
   )
 }
 
