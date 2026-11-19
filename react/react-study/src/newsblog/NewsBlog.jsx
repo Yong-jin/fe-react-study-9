@@ -57,6 +57,56 @@ function NewsBlog() {
                                 setLikeCountArr(temp);  //재렌더링 조건 충족
                             }}>♥</span> {likeCountArr[index]}</h4>
                             <p>내용</p>
+                            
+                            <button onClick={()=>{
+                                //삭제 버튼을 누르면
+                                //눌린 대상을 삭제
+
+                                //배열 데이터 기반으로 화면에 표시 구조
+                                //배열 내부에 현재 삭제를 누른 대상 index 위치에 있는 값을 제거
+
+                                //몇번째 index 위치의 삭제를 누른것인가? 
+
+                                // 위에 map 반복문에서 index 값 존재
+
+                                // 배열.splice (index, 몇개지우나, 추가할값)
+                                //               1     1
+                                //               4     1 
+                                
+                                //1) splice 함수 활용
+                                // let temp = [...news];
+                                // temp.splice(index, 1); //index 위치 값 삭제
+                                // setNews(temp);
+
+                                //likeCountArr.splice(index, 1);
+
+                                // let temp2 = [...likeCountArr];
+                                // temp2.splice(index, 1);
+                                // setLikeCountArr(temp2);
+
+                                //2) filter 방식
+                                // return 조건이 true 인 케이스만 모아서 배열
+                                // index:2 요소 삭제버튼 ->  0!=2   1!=2  2!=2  3!=2  
+                                // 현재index != 삭제누른index
+                                let temp = [...news];
+                                temp = temp.filter((value, idx)=>{   // ==> 최종 결과 [1,2,3,4]
+                                    return idx != index;  // return true 만 모아서
+                                })
+                                console.log(temp);
+                                setNews(temp);
+
+                                // let temp2 = [...likeCountArr];
+                                // temp2 = temp2.filter((value, idx)=>{
+                                //     return idx != index;
+                                // })
+                                // setLikeCountArr(temp2);
+
+                                setLikeCountArr( likeCountArr.filter(( _ , idx)=> idx != index) );
+
+
+
+                            }}>삭제</button>
+
                         </div>
                     )
                 })
