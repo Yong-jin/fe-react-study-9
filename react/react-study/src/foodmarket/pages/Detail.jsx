@@ -1,8 +1,57 @@
 import { Container, Row, Col, Button } from 'react-bootstrap';
 import { useParams, useNavigate } from "react-router";
-
+import { useState, useEffect } from 'react';
 
 function Detail( {foods} ){
+
+
+
+    //--------------------------------------
+    /*
+        useEffect 훅 (Hooks)
+
+        useEffect(실행할함수, 의존성배열)
+
+        useEffect(실행할함수, [])   빈배열 -> 생성시에만 실행
+        useEffect(실행할함수) -> 모든 로딩될때 실행 (생성, update)
+        useEffect(실행할함수, [count]) -> count 값이 바뀔때마다 실행
+        useEffect(실행할함수, [a,b,c]) -> a,b,c 중에 하나라도 값이 바뀔때마다 실행
+
+        useEffect(실행할함수(){
+            return ()=>{ clean up function }    //unmount 시 실행할 함수
+        }, 의존성배열)
+
+    */
+
+    let [orderCount, setOrderCount] = useState(0);
+    let [test, setTest] = useState(0);
+
+    useEffect(()=>{
+        console.log("useEffect 함수 실행. (의존성배열 없음)");
+    }) //의존성배열X -> 매번 실행
+
+    useEffect(()=>{
+        console.log("useEffect 함수 실행. [] 빈 의존성 배열 의존");
+    }, [])  //빈배열 -> 생성/로딩시 1회 실행
+
+    useEffect(()=>{
+        console.log("useEffect 함수 실행. [orderCount] : " + orderCount);
+    }, [orderCount]) //의존성배열에 있는 orderCount 값 -> 참고
+
+    useEffect(()=>{
+        console.log("useEffect 함수 실행. [test] : " + test);
+    }, [test]) //의존성배열에 있는 orderCount 값 -> 참고
+
+    useEffect(()=>{
+        console.log("useEffect 함수 실행. [test, orderCount] ");
+    }, [test, orderCount]) //의존성배열에 있는 orderCount 값 -> 참고
+
+
+    //--------------------------------------
+
+
+
+
     // 상세보기를 눌렀을때
     // 특정 상품의 상세정보를 보여주는 페이지
 
@@ -68,9 +117,16 @@ function Detail( {foods} ){
                     <p>{food.price}</p>
 
                     <div>
-                        <Button variant="dark">-</Button>
-                        <span> 0 </span>
-                        <Button variant="dark">+</Button>
+                        <Button variant="dark" onClick={()=>{
+                            setOrderCount(orderCount-1);
+                        }}>-</Button>
+                        <span> {orderCount} </span>
+                        <Button variant="dark" onClick={()=>{
+                            setOrderCount(orderCount+1);
+                            console.log('onClick() 함수에서 출력 : ' + orderCount);
+                        }}>+</Button>
+
+                        {/* <button onClick={()=>{setTest(test+1);}}>test값증가</button> */}
                     </div>
 
                     <Button variant="primary">주문하기</Button>
