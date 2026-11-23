@@ -33,6 +33,7 @@ let foodsData = [
         content: "메이플 시럽 잔뜩",
         price: 8000,
         imgPath: "images/food4.jpg",
+        stockCount: 0
     },
     {
         id: "fd005",

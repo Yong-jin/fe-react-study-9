@@ -171,18 +171,51 @@ function Detail({ foods }) {
 
                     <div>
                         <Button variant="dark" onClick={() => {
-                            setOrderCount(orderCount - 1);
+
+                            //-1씩 처리  0보다 작으면? -> 0 
+
+                            /* orderCount = orderCount - 1;
+                            if(orderCount < 0)
+                                orderCount = 0;
+                            setOrderCount(orderCount); */
+
+                            // -1 처리후 0 이상이 되는가? 
+                            /* if( orderCount - 1 >= 0)
+                                setOrderCount(orderCount-1); */
+
+                            // 수량 > 0 ? 그때 -1 처리
+                            if( orderCount > 0 )
+                                setOrderCount(orderCount - 1);
+
+
                         }}>-</Button>
                         <span> {orderCount} </span>
                         <Button variant="dark" onClick={() => {
-                            setOrderCount(orderCount + 1);
+                            
+                            //보유한 재고수량 까지만 + 가능
+                            // 재고수량보다 작을때만 +1 처리
+                            // 재고수량 : food.stockCount
+
+                            if(orderCount < food.stockCount){
+                                setOrderCount(orderCount + 1);
+                            } else {
+                                alert("최대 수량입니다.");
+                            }
+
                             console.log('onClick() 함수에서 출력 : ' + orderCount);
                         }}>+</Button>
 
                         {/* <button onClick={()=>{setTest(test+1);}}>test값증가</button> */}
                     </div>
 
-                    <Button variant="primary">주문하기</Button>
+                    {
+                        /* 이 화면에 보이는 상품 재고가 0이면?  */
+                        food.stockCount == 0 ?
+                            <Button variant="secondary" disabled="true">품절</Button>
+                            :
+                            <Button variant="primary">주문하기</Button>
+                    }
+                    
                 </Col>
 
             </Row>
